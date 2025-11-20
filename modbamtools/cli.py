@@ -202,6 +202,7 @@ def listify(ctx, param, value):
     help="space between single molucles in px",
 )
 @click.option(
+    "-col",
     "--colors",
     is_flag=False,
     default=None,

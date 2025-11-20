@@ -204,7 +204,7 @@ def listify(ctx, param, value):
 @click.option(
     "--colors",
     is_flag=False,
-    defalut=None,
+    default=None,
     type=str,
     help="Comma-separated list of colors for sample tracks (e.g., '#1f77b4,#d62728,#2ca02c').",
 )

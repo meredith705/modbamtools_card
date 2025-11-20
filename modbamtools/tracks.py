@@ -166,7 +166,7 @@ def parse_bed(bed_path, chrom, start, end):
 
 
 def make_modbam_trace(
-    dicts, start, end, heterogeneity=None, marker_size=6, single_trace_height=12. colors=None
+    dicts, start, end, heterogeneity=None, marker_size=6, single_trace_height=12, colors=None
 ):
     """ Added colors to be provided by user for line colors """
     # if no colors provided, use default T10 palette

@@ -201,6 +201,13 @@ def listify(ctx, param, value):
     type=int,
     help="space between single molucles in px",
 )
+@click.option(
+    "--colors",
+    is_flag=False,
+    defalut=None,
+    type=str,
+    help="Comma-separated list of colors for sample tracks (e.g., '#1f77b4,#d62728,#2ca02c').",
+)
 def plot(
     bams,
     region,
@@ -225,6 +232,7 @@ def plot(
     font_size,
     marker_size,
     single_trace_height,
+    colors,
 ):
     "Plot single-read base modification data"
     if batch:
@@ -242,6 +250,8 @@ def plot(
             track_titles = [t for t in track_titles.strip().split(",")]
         if fmt == "pdf":
             merger = PdfFileMerger()
+        if colors:
+            colors = [c.strip() for c in colors.split(",")]
 
         with open(batch, "r") as b:
             for l in b:
@@ -282,6 +292,7 @@ def plot(
                     fmt=fmt,
                     marker_size=marker_size,
                     single_trace_height=single_trace_height,
+                    colors=colors,
                 )
                 plot.plot_tracks()
                 if height:
@@ -347,6 +358,7 @@ def plot(
             fmt=fmt,
             marker_size=marker_size,
             single_trace_height=single_trace_height,
+            colors=colors,
         )
         fig.plot_tracks()
         if height:

@@ -26,6 +26,7 @@ class Plotter:
         fmt="html",
         marker_size=6,
         single_trace_height=12,
+        colors=None,
     ) -> None:
         self.chrom = chrom
         self.start = start
@@ -42,6 +43,7 @@ class Plotter:
         self.fmt = fmt
         self.marker_size = marker_size
         self.single_trace_height = single_trace_height
+        self.colors = colors
 
         if self.fmt == "html":
             self.tracks, self.num_tracks = get_tracks_gl(
@@ -70,6 +72,7 @@ class Plotter:
                 self.heterogeneity,
                 self.marker_size,
                 self.single_trace_height,
+                colors=self.color
             )
         # print(self.num_tracks, self.track_titles)
         self.plot_height, self.row_heights = get_heights(self.tracks)

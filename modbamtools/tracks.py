@@ -166,9 +166,13 @@ def parse_bed(bed_path, chrom, start, end):
 
 
 def make_modbam_trace(
-    dicts, start, end, heterogeneity=None, marker_size=6, single_trace_height=12
+    dicts, start, end, heterogeneity=None, marker_size=6, single_trace_height=12. colors=None
 ):
-    colors = px.colors.qualitative.T10
+    """ Added colors to be provided by user for line colors """
+    # if no colors provided, use default T10 palette
+    if colors is None:
+        colors = px.colors.qualitative.T10
+
     freq_traces = []
     single_read_traces = []
     traces_height = []
@@ -176,21 +180,26 @@ def make_modbam_trace(
     # single_trace_height = 12  # px
 
     for i, sample_dict in enumerate(dicts):
-        freq = plot_frequencies(sample_dict, start, end, color=colors[i])
+        # account for not enough colors being provided
+        color = colors[i % len(colors)]
+
+        freq = plot_frequencies(sample_dict, start, end, color=color)
         freq_traces.append(freq)
 
         if heterogeneity:
-            het_trace = get_dict_heterogeneity(sample_dict, start, end, color=colors[i])
+            het_trace = get_dict_heterogeneity(sample_dict, start, end, color=color)
             het_traces.append(het_trace)
 
         sample_dict = queue_reads_plotly(sample_dict)
         traces = []
+
+
         for line, reads in sample_dict.items():
             for read in reads:
                 traces.append(
                     go.Scatter(
                         mode="lines+markers",
-                        line=dict(color=colors[i], width=marker_size / 2),
+                        line=dict(color=color, width=marker_size / 2),
                         x=list(read[1][2].keys()),
                         y=np.full(len(read[1][2].keys()), line),
                         connectgaps=True,
@@ -228,7 +237,9 @@ def get_tracks(
     heterogeneity=None,
     marker_size=6,
     single_trace_height=12,
+    colors=None,
 ):
+    """ added user defined colors """
     tracks = {}
     num_tracks = 0
     if gtfs:
@@ -268,6 +279,7 @@ def get_tracks(
                 heterogeneity,
                 marker_size,
                 single_trace_height=single_trace_height,
+                colors=colors
             )
             tracks["heterogeneity"] = het_traces
             tracks["modbase_freq"] = freq_traces
@@ -280,6 +292,7 @@ def get_tracks(
                 end,
                 marker_size=marker_size,
                 single_trace_height=single_trace_height,
+                colors=colors
             )
             tracks["modbase_freq"] = freq_traces
             tracks["modbase"] = single_read_traces

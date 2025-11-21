@@ -373,10 +373,11 @@ def plot(
             fig.fig.write_html(out_path)
             # print(fig.fig.layout.height)
         else:
-            #fig.fig.write_image(out_path)
-            imgbites = fig.fig.to_image(format="png")
+            fig.fig.write_image(out_path)
+            """imgbites = fig.fig.to_image(format="png")
             with open(out_path, "wb") as f:
                 f.write(imgbites)
+            """
             # fig.fig.write_image(out_path, width=5 * 96, height=fig.plot_height, scale=1)
             # print(fig.fig.layout.height)
     else:

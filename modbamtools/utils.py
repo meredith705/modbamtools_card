@@ -14,6 +14,7 @@ import plotly.express as px
 from plotly.subplots import make_subplots
 
 pio.templates.default = "simple_white"
+pio.renderers.default = "png"
 pio.kaleido.scope.default_format = "png"
 
 def binerize_mod_call(call, min_prob=0.5, max_prob=0.5):

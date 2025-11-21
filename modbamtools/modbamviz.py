@@ -58,6 +58,7 @@ class Plotter:
                 self.heterogeneity,
                 self.marker_size,
                 self.single_trace_height,
+                colors=self.colors,
             )
         else:
             self.tracks, self.num_tracks = get_tracks(
@@ -72,7 +73,7 @@ class Plotter:
                 self.heterogeneity,
                 self.marker_size,
                 self.single_trace_height,
-                colors=self.colors
+                colors=self.colors,
             )
         # print(self.num_tracks, self.track_titles)
         self.plot_height, self.row_heights = get_heights(self.tracks)

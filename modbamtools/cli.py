@@ -119,6 +119,14 @@ def listify(ctx, param, value):
     help="output path",
 )
 @click.option(
+    "-col",
+    "--colors",
+    is_flag=False,
+    default=None,
+    type=str,
+    help="Comma-separated list of colors for sample tracks (e.g., '#1f77b4,#d62728,#2ca02c').",
+)
+@click.option(
     "-p",
     "--prefix",
     required=False,
@@ -201,14 +209,6 @@ def listify(ctx, param, value):
     type=int,
     help="space between single molucles in px",
 )
-@click.option(
-    "-col",
-    "--colors",
-    is_flag=False,
-    default=None,
-    type=str,
-    help="Comma-separated list of colors for sample tracks (e.g., '#1f77b4,#d62728,#2ca02c').",
-)
 def plot(
     bams,
     region,
@@ -219,6 +219,7 @@ def plot(
     samples,
     hap,
     out,
+    colors,
     can_prob,
     mod_prob,
     height,
@@ -233,7 +234,6 @@ def plot(
     font_size,
     marker_size,
     single_trace_height,
-    colors,
 ):
     "Plot single-read base modification data"
     if batch:

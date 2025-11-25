@@ -183,7 +183,7 @@ def make_modbam_trace(
     # single_trace_height = 12  # px
 
     for i, sample_dict in enumerate(dicts):
-        print('i',i,'colors:',colors, colors[i])
+        print('i',i,'colors:',colors, colors[i], 'split',split_colors, split_colors[i])
         # account for not enough colors being provided
         color = colors[i % len(colors)]
         print("make modbam tracks color:", color)

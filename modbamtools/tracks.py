@@ -67,7 +67,6 @@ def parse_bedgraph(bedgraph_path, chrom, start, end):
 
 def plot_frequencies(dict_per_read_mod, start, end, color):
     height = 200  # px
-    print('color:', color)
 
     traces = []
     freq, freq_smooth = calc_freq(dict_per_read_mod, start, end)
@@ -186,7 +185,6 @@ def make_modbam_trace(
         # account for not enough colors being provided
         color = split_colors[i % len(split_colors)]
         # color = split_colors[i]
-        print("make modbam tracks color:", color)
 
         freq = plot_frequencies(sample_dict, start, end, color=color)
         freq_traces.append(freq)

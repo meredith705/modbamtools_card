@@ -183,11 +183,9 @@ def make_modbam_trace(
     # single_trace_height = 12  # px
 
     for i, sample_dict in enumerate(dicts):
-        print('i',i,'colors:',colors, colors[i], 'split',split_colors, split_colors[i])
-        print('i % len(colors', i % len(colors))
         # account for not enough colors being provided
-        # color = colors[i % len(colors)]
-        color = split_colors[i]
+        color = split_colors[i % len(split_colors)]
+        # color = split_colors[i]
         print("make modbam tracks color:", color)
 
         freq = plot_frequencies(sample_dict, start, end, color=color)

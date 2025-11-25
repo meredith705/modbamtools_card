@@ -253,7 +253,6 @@ def plot(
             merger = PdfFileMerger()
         if colors:
             colors = [c.strip() for c in colors.split(",")]
-            print('split colors', colors)
 
         with open(batch, "r") as b:
             for l in b:

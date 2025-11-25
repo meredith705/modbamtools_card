@@ -173,6 +173,8 @@ def make_modbam_trace(
     # if no colors provided, use default T10 palette
     if colors is None:
         colors = px.colors.qualitative.T10
+    else:
+        split_colors = [c for c in colors.split(",")]
 
     freq_traces = []
     single_read_traces = []

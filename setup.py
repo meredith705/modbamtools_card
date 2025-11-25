@@ -42,7 +42,7 @@ setup(
         "modbampy==0.5.3",
         "kaleido>=1.2.0",
         "pyBigWig>=0.3.22",
-        "choreographer>=1.2.1"
+        "choreographer>=1.2.1",
         "PyPDF2",
         "pillow",
         "hdbscan",

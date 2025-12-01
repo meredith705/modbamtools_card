@@ -107,10 +107,10 @@ class Plotter:
             rows=self.num_tracks,
             cols=1,
             shared_xaxes=True,
-            vertical_spacing=50 / self.plot_height,
+            vertical_spacing=0.005,       #50 / self.plot_height, Make spacing smaller inbetween 
             row_heights=self.row_heights,
             subplot_titles=self.titles,
-            x_title="Coordinate" + " (" + self.chrom + ")",
+            x_title=self.chrom,
         )
         self.fig.update_layout(font=dict(size=self.font_size))
         self.fig.update_layout(height=self.plot_height)
@@ -216,6 +216,6 @@ class Plotter:
             height=self.plot_height,
             # width=8 * 96,
             # autosize=False,
-            margin=dict(l=10, r=10, t=30, b=60),
+            margin=dict(l=10, r=10, t=80, b=60),   # make top margin larger
         )
         # self.fig.update_yaxes(constrain="domain")

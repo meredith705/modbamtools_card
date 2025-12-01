@@ -107,7 +107,7 @@ class Plotter:
             rows=self.num_tracks,
             cols=1,
             shared_xaxes=True,
-            vertical_spacing=0.005,       #50 / self.plot_height, Make spacing smaller inbetween 
+            vertical_spacing=0.05,       #50 / self.plot_height, Make spacing smaller inbetween 
             row_heights=self.row_heights,
             subplot_titles=self.titles,
             x_title=self.chrom,

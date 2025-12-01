@@ -132,6 +132,7 @@ class Plotter:
         if self.beds:
             for elements in self.tracks["bed"]:
                 for name_trace in elements[1]:
+                    name_trace.textfont = {"size": 8}              # try to make the bed labels smaller 
                     self.fig.append_trace(name_trace, row=i, col=1)
                 for shape in elements[2]:
                     self.fig.add_shape(shape, row=i, col=1)

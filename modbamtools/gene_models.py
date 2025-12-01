@@ -63,12 +63,20 @@ def parse_gtf(gtf_path, chrom, start, end, record_type="", vertical_spacing=3):
             continue
         if record.feature == record_type:
 
-            records[record.gene_name + " (" + record.gene_type + ")"] = [
-                record.end - record.start,
-                (record.start, record.end),
-                record_text_plot(record.start, record.end, start, end),
-                record.strand,
-            ]
+            if record.gene_type == "protein_coding":
+                records[record.gene_name] = [
+                    record.end - record.start,
+                    (record.start, record.end),
+                    record_text_plot(record.start, record.end, start, end),
+                    record.strand,
+                ]
+            else:
+                records[record.gene_name + " (" + record.gene_type + ")"] = [
+                    record.end - record.start,
+                    (record.start, record.end),
+                    record_text_plot(record.start, record.end, start, end),
+                    record.strand,
+                ]
 
     records = queue_reads(records)
     name_traces = []

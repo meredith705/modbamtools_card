@@ -62,6 +62,7 @@ def parse_gtf(gtf_path, chrom, start, end, record_type="", vertical_spacing=3):
         if record.gene_type == "misc_RNA":
             continue
         if record.feature == record_type:
+            print('gene type', record.gene_type)
 
             if record.gene_type == "protein_coding":
                 records[record.gene_name] = [
@@ -71,7 +72,8 @@ def parse_gtf(gtf_path, chrom, start, end, record_type="", vertical_spacing=3):
                     record.strand,
                 ]
             else:
-                records[record.gene_name + " (" + record.gene_type + ")"] = [
+                # records[record.gene_name + " (" + record.gene_type + ")"] = [
+                records[record.gene_name] = [
                     record.end - record.start,
                     (record.start, record.end),
                     record_text_plot(record.start, record.end, start, end),

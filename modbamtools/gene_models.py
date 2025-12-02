@@ -143,6 +143,7 @@ def merge_exons(intervals):
     return merged
 
 
+# remove gene_type annotation 
 def parse_gtf_exons(gtf_path, chrom, start, end, vertical_spacing=25):
     per_line_height = 60  # px
     gtf = pysam.TabixFile(gtf_path, parser=pysam.asGTF())
@@ -152,19 +153,23 @@ def parse_gtf_exons(gtf_path, chrom, start, end, vertical_spacing=25):
 
             if record.gene_type == "misc_RNA":
                 continue
-            if record.gene_name + " (" + record.gene_type + ")" not in recs.keys():
-                recs[record.gene_name + " (" + record.gene_type + ")"] = {
+            # if record.gene_name + " (" + record.gene_type + ")" not in recs.keys():
+            if record.gene_name not in recs.keys():
+                # recs[record.gene_name + " (" + record.gene_type + ")"] = {
+                recs[record.gene_name] = {
                     "gene": [],
                     "exons": [],
                 }
             if record.feature == "gene":
-                recs[record.gene_name + " (" + record.gene_type + ")"]["gene"] = (
+                # recs[record.gene_name + " (" + record.gene_type + ")"]["gene"] = (
+                recs[record.gene_name]["gene"] = (
                     record.start,
                     record.end,
                     record.strand,
                 )
             if record.feature == "exon":
-                recs[record.gene_name + " (" + record.gene_type + ")"]["exons"].append(
+                # recs[record.gene_name + " (" + record.gene_type + ")"]["exons"].append(
+                recs[record.gene_name]["exons"].append(
                     [record.start, record.end]
                 )
         else:

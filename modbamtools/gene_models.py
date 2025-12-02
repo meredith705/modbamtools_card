@@ -259,7 +259,7 @@ def parse_gtf_exons(gtf_path, chrom, start, end, vertical_spacing=25):
 
 def parse_bed_rectangle(bed_path, chrom, start, end, vertical_spacing=20):
 
-    per_line_height = 25 # 50  # px
+    per_line_height = 50  # px
     shapes = []
     bed = pysam.TabixFile(bed_path)
     records = {}
@@ -295,16 +295,16 @@ def parse_bed_rectangle(bed_path, chrom, start, end, vertical_spacing=20):
             color = "Crimson"
             fill = "Salmon"
 
-            name_traces.append(
-                go.Scatter(
-                    x=record[1][2][0],
-                    y=[(i + 4)],
-                    text=record[1][3],
-                    mode="text",
-                    textposition=record[1][2][1],
-                    showlegend=False,
-                )
-            )
+            # name_traces.append(
+            #     go.Scatter(
+            #         x=record[1][2][0],
+            #         y=[(i + 4)],
+            #         text=record[1][3],
+            #         mode="text",
+            #         textposition=record[1][2][1],
+            #         showlegend=False,
+            #     )
+            # )
 
             shapes.append(
                 dict(

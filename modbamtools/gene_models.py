@@ -259,7 +259,7 @@ def parse_gtf_exons(gtf_path, chrom, start, end, vertical_spacing=25):
 
 def parse_bed_rectangle(bed_path, chrom, start, end, vertical_spacing=10):
 
-    per_line_height = 40 #50  # px
+    per_line_height = 20 #50  # px
     shapes = []
     bed = pysam.TabixFile(bed_path)
     records = {}

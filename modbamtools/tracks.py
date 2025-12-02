@@ -309,17 +309,17 @@ def get_heights(tracks):
     for track_type, sub_tracks in tracks.items():
         if (track_type == "heterogeneity") & (len(sub_tracks) != 0):
             heights.append(sub_tracks[0][-1])
-            # print("heterogeneity", sub_tracks[0][-1])
+            print("heterogeneity", sub_tracks[0][-1])
             continue
         if track_type == "modbase_freq":
             heights.append(sub_tracks[0][-1])
-            # print("modbase_freq", sub_tracks[0][-1])
+            print("modbase_freq", sub_tracks[0][-1])
             continue
         for track in sub_tracks:
             heights.append(track[-1])
-            # print(track_type, track[-1])
+            print(track_type, track[-1])
     plot_height = sum(heights)
-    # print(plot_height)
+    print("plot_height",plot_height)
     row_heights = [x / plot_height for x in heights]
-    # print(row_heights)
+    print("row_heights",row_heights)
     return plot_height, row_heights

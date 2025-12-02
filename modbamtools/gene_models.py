@@ -257,7 +257,7 @@ def parse_gtf_exons(gtf_path, chrom, start, end, vertical_spacing=25):
     return ylim, name_traces, shapes, height
 
 
-def parse_bed_rectangle(bed_path, chrom, start, end, vertical_spacing=20):
+def parse_bed_rectangle(bed_path, chrom, start, end, vertical_spacing=10):
 
     per_line_height = 40 #50  # px
     shapes = []
@@ -288,7 +288,7 @@ def parse_bed_rectangle(bed_path, chrom, start, end, vertical_spacing=20):
     shapes = []
     i = 0
     row = 0
-    rectangle_height = 2
+    rectangle_height = 4
     for row, record_list in records.items():
 
         for record in record_list:

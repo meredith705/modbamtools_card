@@ -288,7 +288,7 @@ def parse_bed_rectangle(bed_path, chrom, start, end, vertical_spacing=20):
     shapes = []
     i = 0
     row = 0
-    rectangle_height = 4
+    rectangle_height = 2
     for row, record_list in records.items():
 
         for record in record_list:
